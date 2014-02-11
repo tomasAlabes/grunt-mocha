@@ -31,6 +31,11 @@
           data.slow = test.slow;
         }
 
+        // when tests have finished send coverage object if it exists
+        if (ev === 'end' && window.__coverage__) {
+          sendMessage('coverage', window.__coverage__);
+        }
+
         sendMessage('mocha.' + ev, data);
       });
     }
