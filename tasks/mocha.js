@@ -46,6 +46,11 @@ module.exports = function(grunt) {
     var listeners = {};
     var suites = [];
 
+    // listen for coverage event and propagate through Grunt
+    phantomjs.on('coverage', function (cov) {
+      grunt.event.emit('coverage', cov);
+    });
+
     // Hook on Phantomjs Mocha reporter events.
     phantomjs.on('mocha.*', function(test) {
       var name, fullTitle, slow, err;
