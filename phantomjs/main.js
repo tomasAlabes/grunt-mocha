@@ -145,5 +145,12 @@ page.onLoadFinished = function(status) {
   }
 };
 
+options.viewport = options.viewport || {};
+
+page.viewportSize = {
+  width: options.viewport.width || 1280,
+  height: options.viewport.height || 720
+};
+
 // Actually load url.
 page.open(url);
